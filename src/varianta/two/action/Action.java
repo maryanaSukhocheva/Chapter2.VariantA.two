@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package varianta.two.action;
 
 import java.util.Scanner;
@@ -16,19 +12,19 @@ public class Action {
 
     /**
      *
-     * @return
+     * @return arrayOfNumbers
      */
-    public String[] Numbers() {
+    public String[] numbers() {
         boolean result;
         float number;
-        String[] masNum = null;
+        String[] arrayOfNumbers = null;
         try (Scanner scan = new Scanner(System.in)) {
             result = false;
-            String str = scan.nextLine();
-            for (String retval : str.split(pattern)) {
+            String inputString = scan.nextLine();
+            for (String currentValue : inputString.split(pattern)) {
                 try {
-                    if (!retval.isEmpty()) {
-                        number = Float.valueOf(retval);
+                    if (!currentValue.isEmpty()) {
+                        number = Float.valueOf(currentValue);
                         result = true;
                     }
                 } catch (NumberFormatException e) {
@@ -39,84 +35,84 @@ public class Action {
             }
             scan.close();
             if (result) {
-                masNum = str.split(pattern);
+                arrayOfNumbers = inputString.split(pattern);
             }
         }
-        return masNum;
+        return arrayOfNumbers;
     }
     
     /**
      *
-     * @param masDec
+     * @param arrayOfNumbers
      */
-    public void DecNumbers(String[] masNum) {
-        String[] masDec=masNum;
+    public void decNumbers(String[] arrayOfNumbers) {
+        String[] arrayOfNumbersDec=arrayOfNumbers;
         int min;
         int min_i;
-        String strOut = "";
-        for (int i = 0; i < masDec.length; i++) {
+        String stringOut = "";
+        for (int i = 0; i < arrayOfNumbersDec.length; i++) {
             /*Предполагаем, что первый элемент (в каждом
              подмножестве элементов) является минимальным */
-            min = masDec[i].length();
+            min = arrayOfNumbersDec[i].length();
             min_i = i;
             /*В оставшейся части подмножества ищем элемент,
              который меньше предположенного минимума*/
-            for (int j = i + 1; j < masDec.length; j++) {
+            for (int j = i + 1; j < arrayOfNumbersDec.length; j++) {
                 //Если находим, запоминаем его индекс
-                if (masDec[j].length() < min) {
-                    min = masDec[j].length();
+                if (arrayOfNumbersDec[j].length() < min) {
+                    min = arrayOfNumbersDec[j].length();
                     min_i = j;
                 }
             }
             /*Если нашелся элемент, меньший, чем на текущей позиции,
              меняем их местами*/
             if (i != min_i) {
-                String tmp = masDec[i];
-                masDec[i] = masDec[min_i];
-                masDec[min_i] = tmp;
+                String tmp = arrayOfNumbersDec[i];
+                arrayOfNumbersDec[i] = arrayOfNumbersDec[min_i];
+                arrayOfNumbersDec[min_i] = tmp;
             }
         }
-        for (String str : masDec) {
-            strOut = strOut +" "+ str;
+        for (String str : arrayOfNumbersDec) {
+            stringOut = stringOut +" "+ str;
         }
-        System.out.println("Числа в порядке возрастания значений их длины - " + strOut);
+        System.out.println("Числа в порядке возрастания значений их длины - " + stringOut);
     }
 
     /**
      *
-     * @param masInc
+     * @param arrayOfNumbers
      */
-    public void IncNumbers(String[] masNum) {
-        String[] masInc=masNum;
+    public void incNumbers(String[] arrayOfNumbers) {
+        String[] arrayOfNumbersInc=arrayOfNumbers;
         int max;
         int max_i;
-        String strOut = "";
-        for (int i = 0; i < masInc.length; i++) {
+        String stringOut = "";
+        for (int i = 0; i < arrayOfNumbersInc.length; i++) {
             /*Предполагаем, что первый элемент (в каждом
              подмножестве элементов) является минимальным */
-            max = masInc[i].length();
+            max = arrayOfNumbersInc[i].length();
             max_i = i;
             /*В оставшейся части подмножества ищем элемент,
              который меньше предположенного минимума*/
-            for (int j = i + 1; j < masInc.length; j++) {
+            for (int j = i + 1; j < arrayOfNumbersInc.length; j++) {
                 //Если находим, запоминаем его индекс
-                if (masInc[j].length() > max) {
-                    max = masInc[j].length();
+                if (arrayOfNumbersInc[j].length() > max) {
+                    max = arrayOfNumbersInc[j].length();
                     max_i = j;
                 }
             }
             /*Если нашелся элемент, меньший, чем на текущей позиции,
              меняем их местами*/
             if (i != max_i) {
-                String tmp = masInc[i];
-                masInc[i] = masInc[max_i];
-                masInc[max_i] = tmp;
+                String tmp = arrayOfNumbersInc[i];
+                arrayOfNumbersInc[i] = arrayOfNumbersInc[max_i];
+                arrayOfNumbersInc[max_i] = tmp;
             }
         }
-        for (String str : masInc) {
-            strOut = strOut + " "+str;
+        for (String str : arrayOfNumbersInc) {
+            stringOut = stringOut + " "+str;
         }
 
-        System.out.println("Числа в порядке убывания значений их длины - " + strOut);
+        System.out.println("Числа в порядке убывания значений их длины - " + stringOut);
     }
 }
