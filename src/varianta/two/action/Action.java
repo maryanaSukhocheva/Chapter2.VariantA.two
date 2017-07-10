@@ -7,8 +7,7 @@ import java.util.Scanner;
  * @author Sukhocheva Maryana
  */
 public class Action {
-    
-    String pattern = "(\\s)+|($)";
+    private String pattern = "(\\s)+|($)";
 
     /**
      *
@@ -46,7 +45,7 @@ public class Action {
      * @param arrayOfNumbers
      */
     public void decNumbers(String[] arrayOfNumbers) {
-        String[] arrayOfNumbersDec=arrayOfNumbers;
+        String[] arrayOfNumbersDec = arrayOfNumbers;
         int min;
         int min_i;
         String stringOut = "";
@@ -83,7 +82,7 @@ public class Action {
      * @param arrayOfNumbers
      */
     public void incNumbers(String[] arrayOfNumbers) {
-        String[] arrayOfNumbersInc=arrayOfNumbers;
+        String[] arrayOfNumbersInc = arrayOfNumbers;
         int max;
         int max_i;
         String stringOut = "";
